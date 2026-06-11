@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Hero from '@/components/Hero'
-import ArticleCard from '@/components/ArticleCard'
-import SearchBar from '@/components/SearchBar'
-import Sidebar from '@/components/Sidebar'
-import { Article } from '@/types'
+import Hero from './components/Hero'
+import ArticleCard from './components/ArticleCard'
+import SearchBar from './components/SearchBar'
+import Sidebar from './components/Sidebar'
+import { Article } from './types'
 
 export default function Home() {
   const [articles, setArticles] = useState<Article[]>([])

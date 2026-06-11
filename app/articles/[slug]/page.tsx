@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Article } from '@/types'
-import { formatDate } from '@/utils/formatters'
+import { Article } from '../../types'
+import { formatDate } from '../../utils'
 import { Eye } from 'lucide-react'
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {

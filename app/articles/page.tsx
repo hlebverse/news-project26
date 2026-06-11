@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import ArticleCard from '@/components/ArticleCard'
-import SearchBar from '@/components/SearchBar'
-import { Article } from '@/types'
+import ArticleCard from '../components/ArticleCard'
+import SearchBar from '../components/SearchBar'
+import { Article } from '../types'
 
 export default function ArticlesPage() {
   const [articles, setArticles] = useState<Article[]>([])

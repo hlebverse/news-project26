@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Screenshot } from '@/types'
+import { Screenshot } from '../types'
 
 export default function ScreenshotsPage() {
   const [screenshots, setScreenshots] = useState<Screenshot[]>([])

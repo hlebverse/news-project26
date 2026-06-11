@@ -1,36 +1,201 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Blog - Next.js Application
 
-## Getting Started
+A modern AI Blog website built with Next.js 16, TypeScript, Tailwind CSS, and Prisma.
 
-First, run the development server:
+## 🚀 Features
 
+- **📝 Articles Management**: Create, read, update, and delete articles
+- **🏗️ Projects Showcase**: Display and manage projects
+- **📸 Screenshots Gallery**: Upload and manage project screenshots
+- **🔍 Search & Filter**: Search articles by title, content, or category
+- **🎨 Dark Theme**: Beautiful dark UI inspired by Figma design
+- **📱 Responsive Design**: Mobile-friendly layout
+- **⚡ Fast Performance**: Optimized with Next.js
+- **🗄️ SQLite Database**: Lightweight database with Prisma ORM
+
+## 📋 Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+## 🛠️ Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone git@github.com:hlebverse/news-project26.git
+cd news-project26
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Setup environment variables:
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Setup Prisma database:
+```bash
+npx prisma migrate dev --name init
+```
 
-## Learn More
+5. Start the development server:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/
+│   ├── api/              # API routes (articles, projects, screenshots)
+│   ├── articles/         # Article pages
+│   ├── projects/         # Projects pages
+│   ├── screenshots/      # Screenshots gallery
+│   ├── layout.tsx        # Root layout
+│   └── page.tsx          # Home page
+├── components/           # React components
+│   ├── Header.tsx
+│   ├── Hero.tsx
+│   ├── ArticleCard.tsx
+│   ├── ProjectCard.tsx
+│   ├── SearchBar.tsx
+│   ├── Sidebar.tsx
+│   └── Footer.tsx
+├── lib/                  # Utilities
+│   └── prisma.ts
+├── styles/               # Global styles
+│   └── globals.css
+├── types/                # TypeScript types
+│   └── index.ts
+└── utils/                # Helper functions
+    └── formatters.ts
 
-## Deploy on Vercel
+prisma/
+└── schema.prisma         # Database schema
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🗄️ Database Models
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Article
+- `id`: Unique identifier
+- `title`: Article title
+- `slug`: URL-friendly slug
+- `excerpt`: Short description
+- `content`: Full content
+- `thumbnail`: Featured image
+- `category`: Article category
+- `tags`: Array of tags
+- `views`: View count
+- `published`: Publication status
+- `author`: User relationship
+
+### Project
+- `id`: Unique identifier
+- `name`: Project name
+- `description`: Project description
+- `thumbnail`: Featured image
+- `screenshots`: Associated screenshots
+
+### Screenshot
+- `id`: Unique identifier
+- `name`: Screenshot name
+- `url`: Image URL
+- `project`: Project relationship
+
+## 🔌 API Endpoints
+
+### Articles
+- `GET /api/articles` - Get all published articles
+- `GET /api/articles?search=query` - Search articles
+- `GET /api/articles?category=AI` - Filter by category
+- `GET /api/articles/[slug]` - Get single article
+- `POST /api/articles` - Create article
+- `PATCH /api/articles/[slug]` - Update article
+- `DELETE /api/articles/[slug]` - Delete article
+
+### Projects
+- `GET /api/projects` - Get all projects
+- `GET /api/projects/[id]` - Get single project
+- `POST /api/projects` - Create project
+- `PATCH /api/projects/[id]` - Update project
+- `DELETE /api/projects/[id]` - Delete project
+
+### Screenshots
+- `GET /api/screenshots` - Get all screenshots
+- `GET /api/screenshots/[id]` - Get single screenshot
+- `POST /api/screenshots` - Create screenshot
+- `PATCH /api/screenshots/[id]` - Update screenshot
+- `DELETE /api/screenshots/[id]` - Delete screenshot
+
+## 🎨 Color Scheme (Dark Theme)
+
+- **Background**: `#0f0f0f`
+- **Card Background**: `#1a1a1a`
+- **Border**: `#2a2a2a`
+- **Primary**: `#6366f1` (Indigo)
+- **Accent**: `#ec4899` (Pink)
+- **Text Primary**: `#ffffff`
+- **Text Secondary**: `#a0aec0`
+
+## 📦 Dependencies
+
+- **Next.js 16** - React framework
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Tailwind CSS 4** - Styling
+- **Prisma** - ORM & database
+- **Lucide React** - Icons
+- **Axios** - HTTP client
+- **Zustand** - State management
+- **React Hot Toast** - Notifications
+
+## 🚀 Deployment
+
+The application is ready to deploy on:
+- **Vercel** (recommended for Next.js)
+- **Netlify**
+- **Railway**
+- **Render**
+
+## 📝 Scripts
+
+```bash
+# Development
+npm run dev          # Start dev server
+
+# Production
+npm run build        # Build for production
+npm run start        # Start production server
+
+# Database
+npm run prisma:migrate    # Run migrations
+npm run prisma:studio     # Open Prisma Studio
+npm run prisma:generate   # Generate Prisma client
+
+# Code Quality
+npm run lint         # Run ESLint
+npm run format       # Format code with Prettier
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+MIT
+
+## 👨‍💻 Author
+
+hlebverse
+
+## 🔗 Links
+
+- [GitHub Repository](https://github.com/hlebverse/news-project26)
+- [Live Demo](#) (Coming soon)
